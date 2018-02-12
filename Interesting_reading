@@ -1,0 +1,4 @@
+new way to swap two values and save one memory: I guess the disadvantage is m = m_o + n_o might exceed the range: 
+# normal way: if m < n: temp = m; m = n; n = temp; --> cost: one memory
+# new way: if m < n: m = m + n; n = m - n; m = m - n; --> cost: no memory:
+# understand: m = m_o + n_o; n = m - n_o = m_o + n_o - n_o = m_o; m = m - n = m_o + n_o - m_o = n_o. 
