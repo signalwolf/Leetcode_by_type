@@ -1,6 +1,5 @@
 70. climbing stairs: use DP, but the optimization room is we only needed to tracking the DP[n] and DP[n - 1]. So instead of use a list to tracking all, we can simply tracking last two and save memory. 
 62. Unique Paths: use DP, but needed to learn how to create 2D matrix in one line. dp = [[0 for i in xrange (n)] for j in xrange (m)], m is the len (dp), n is the len (dp[0]). There is a math solution take O(1) space.
 63. Unique Paths II: try to finish in one pass. This is important, think as you are interviewing. 
-78. subsets. 
-90. subset II (subset with dup): the dup treatment needed to think deeper. But if I must remember, I shall know that tracking the used is not needed.
-43. Multiply Strings: 
+78. subsets and 90. subset II (subset with dup): the dup treatment needed to think deeper. But if I must remember, I shall know that tracking the used is not needed.
+46. Permutations and permutation II: tracking used is not needed as well, you just need to make sure curr not equal to previous one.
