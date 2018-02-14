@@ -7,3 +7,4 @@
 322. Coin Change: sys.max initialized used for tracking the min case; - sys.max used for tracking the max case.
 51. N-Queens: copy method: b_list = a_list [:], b_list = copy.copy (a_list), b_list = copy.deepcopy (a_list). Only after deepcopy, change a_list will not change b_list. Change char in string is too costly, first it needed to change the string to list, then change the char, they convert to string. Always trying not to do it. 
 120. Triangle
+64. Minimum Path Sum: 2D matrix, enable addtional 0 layer for it. Re-write 120,64,62,63
