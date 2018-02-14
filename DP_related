@@ -8,3 +8,5 @@
 51. N-Queens: copy method: b_list = a_list [:], b_list = copy.copy (a_list), b_list = copy.deepcopy (a_list). Only after deepcopy, change a_list will not change b_list. Change char in string is too costly, first it needed to change the string to list, then change the char, they convert to string. Always trying not to do it. 
 120. Triangle
 64. Minimum Path Sum: 2D matrix, enable addtional 0 layer for it. Re-write 120,64,62,63
+70. Climbing Stairs: it is good to read the best solution and think how to improve.
+45. Jump Game II: interesting BFS solution. Read solution is always good.
