@@ -3,3 +3,7 @@
 63. Unique Paths II: try to finish in one pass. This is important, think as you are interviewing. 
 78. subsets and 90. subset II (subset with dup): the dup treatment needed to think deeper. But if I must remember, I shall know that tracking the used is not needed.
 46. Permutations and 47. permutation II: tracking used is not needed as well, you just need to make sure curr not equal to previous one.
+20. Valid Parentheses: it is a good idea to think all the cases and validate it before submit. 
+322. Coin Change: sys.max initialized used for tracking the min case; - sys.max used for tracking the max case.
+51. N-Queens: copy method: b_list = a_list [:], b_list = copy.copy (a_list), b_list = copy.deepcopy (a_list). Only after deepcopy, change a_list will not change b_list. Change char in string is too costly, first it needed to change the string to list, then change the char, they convert to string. Always trying not to do it. 
+120. Triangle
