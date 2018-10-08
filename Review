@@ -1,0 +1,4 @@
+388. Longest Absolute File Path: 仔细思考题目，三种情况的处理：\t, \n, '.'; 使用stack来记录每层的长度即可；一个小tip 是在string的最后加上'\n'这样便不需要单独处理最后一行
+127. Word Ladder: 很明显的需要使用BFS, 只是使用的BFS的方法需要注意，如果直接根据wordlist来建立图，那么需要O(N**2 * L)的时间。优化是在于说使用_来代表所有的可能性，例如 hit = _it, h_t, hi_. 这样只需要 O(N * L)的时间。学习：双向BFS
+54. Spiral Matrix: Recursive解决问题；注意reverse 的使用。
+298. Binary Tree Longest Consecutive Sequence: Divide and conquer, BFS中间部分，然后在
