@@ -34,4 +34,3 @@ for i in xrange(10):
 print hash.hash
 hash.clean(5)
 print hash.hash
-
