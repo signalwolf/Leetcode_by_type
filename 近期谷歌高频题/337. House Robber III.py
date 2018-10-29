@@ -1,5 +1,5 @@
 
-
+# optimized 1: 44ms, 60%
 def helper(root, visited):
     if root in visited:
         return visited[root]
@@ -20,3 +20,17 @@ def helper(root, visited):
 
 def houseRobber(root):
     helper(root, {})
+
+
+# optimized 2: 44ms, 60%
+def houseRobber2(root):
+    return max (helper2 (root))
+
+def helper2(root):
+    if root == None: return [0, 0]
+    left = helper2(root.left)
+    right = helper2(root.right)
+    ans = [0] * 2
+    ans[0] = max(left) + max(right)
+    ans[1] = root.val + left[1] + right[1]
+    return ans
