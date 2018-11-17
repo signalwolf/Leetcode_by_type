@@ -1,3 +1,7 @@
+# coding=utf-8
+
+# 1. 最重要的是，每次update只要check那一行，那一列以及可能check两个diag的一个而不需要去check all
+# 2. 其次就是不需要啊O(N**2)的space，我们只需要记住每行的sum，每列的sum就好
 class TicTacToe(object):
 
     def __init__(self, n):
