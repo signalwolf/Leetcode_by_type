@@ -2,7 +2,9 @@
 
 # 这个解决方案还是比较难的，如果真要按照答案写我估计写不出来
 # 想法大概是这样的：
-#   1.  由于要求说分成 
+#   1.  由于要求说分成
+
+# 特别注意最后出来要做count，并且不能用 if first, 因为first 可能 == 0
 
 # k 分段的解决方法：
 class Solution(object):
@@ -31,6 +33,7 @@ class Solution(object):
                             records.append([False, 0])
         res = []
         for record in records:
+            # notice the is not False, this is critical
             if record[0] is not False and nums.count(record[0]) > len(nums) / (k + 1):
                 res.append(record[0])
         return res
