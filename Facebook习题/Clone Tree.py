@@ -9,8 +9,11 @@ from collections import deque
 def cloneTree(root):
     # BFS, build left and right child, then connect the root to left and right.
 
+    if not root: return None
+
     CopyRoot = TreeNode(root.val)
-    queue = deque([root])
+    queue = deque()
+    queue.append(root)
     mapping = {root: CopyRoot}
     while queue:
         # step1: generate the left and right then connect it with copy one:
