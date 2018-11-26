@@ -1,3 +1,20 @@
+# coding=utf-8
+
+# 最优解：
+from collections import Counter
+class Solution(object):
+    def leastInterval(self, tasks, n):
+        """
+        :type tasks: List[str]
+        :type n: int
+        :rtype: int
+        """
+        tasks_count = Counter(tasks).values()
+        max_count = max(tasks_count)
+        task_amount = tasks_count.count(max_count)
+        return max(len(tasks), (n+1)*(max_count-1)+task_amount)
+
+
 class Solution(object):
     def leastInterval(self, tasks, n):
         """
@@ -6,7 +23,7 @@ class Solution(object):
         :rtype: int
         """
         res = 0
-        countDict = collections.Counter(tasks)
+        countDict = Counter(tasks)
         count = sorted(countDict.values())
 
         while count:
