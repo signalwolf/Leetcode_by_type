@@ -14,7 +14,7 @@
 # sums(p1, p2) < target: increase p2, sums += nums[p2]
 # sums(p1, p2) > target: increase p1, sums -= nums[p1]
 
-def solution(nums, target):
+def solution1(nums, target):
 
     # j not included
     i, j, currSum = 0, 0, 0
@@ -22,12 +22,12 @@ def solution(nums, target):
     while i < len(nums):
 
         # move j forward till j == len(nums) or sums(i, j) >= target
-        while j < len(nums)  and currSum <= target:
+        while j < len(nums)  and currSum < target:
             currSum += nums[j]
             j += 1
 
         # condition#1: sums(nums[i:j]) == target:
-        if currSum == target: return True
+        if currSum == target: return i, j
 
         # condition#2: sums(nums[i:j]) > target:
         # move i till i == j or sums(i, j) <= target
@@ -36,7 +36,26 @@ def solution(nums, target):
             i += 1
 
         # sub condition #1: sum == target
-        if currSum == target: return True
+        if currSum == target:
+            return i, j
+        # sub-condition #2: sum < target:
+        else:
+            i = j
 
-        # sub-condition #2: sum ==
+    return False
+
+from collections import defaultdict
+def solution2 (nums, target):
+    count = defaultdict(list)
+    count[0] = [-1]
+    currSum = 0
+    for i in xrange(len(nums)):
+        currSum += nums[i]
+        if currSum - target in count:
+            return i, count[currSum - target], count
+        count[currSum].append(i)
+    return False
+
+print solution1([13, 12, 7, 2 , 15], 9)
+print solution2([13, 12, 7, 2 , 15], 9)
 
