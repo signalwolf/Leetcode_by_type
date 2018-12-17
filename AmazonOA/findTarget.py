@@ -1,4 +1,5 @@
 from random import randint
+import time
 
 from bisect import bisect_left
 def findtarget(listA, listB, target):
@@ -24,7 +25,7 @@ def findtarget(listA, listB, target):
 
         # currVal + biggest > target and currVal + smallest < target
         index = bisect_left(listB, target - val)
-        print index, val, listA, listB
+        # print index, val, listA, listB
         if target - val == listB[index]:
             return [val, listB[index]]
         else:
@@ -33,9 +34,46 @@ def findtarget(listA, listB, target):
                 res = [target - curr, val, listB[index - 1]]
     return res[1:]
 
+def optimizedSolution(listA, listB, target):
+
+    # ensure listA is the smaller one:
+    if len(listA) > len(listB):
+        listA, listB = listB, listA
+
+    # sort the bigger list for binary search purpose:
+    listB.sort()
+    smallest, biggest = listB[0], listB[-1]
+    res = [float('inf'), None, None]
+    for val in listA:
+        if val + smallest > target:
+            continue
+        if val + biggest < target:
+            diff = target - val - biggest
+            if diff < res[0]:
+                res = [diff, val, biggest]
+        else:
+            # val + smallest <= target, val + biggest >= target:
+            index = bisect_left(listB, target - val)
+            if target - val == listB[index]:
+                return [val, listB[index]]
+            else:
+                curr = val + listB[index - 1]
+                if target - curr < res[0]:
+                    res = [target - curr, val, listB[index - 1]]
+    return res[1:]
+
+
+
 A = [randint(0, 100) for _ in xrange(10)]
 B = [randint(0, 100) for _ in xrange(10)]
 print A, B
-print findtarget(A, B, 100)
-
-
+start = time.clock()
+# solution#1:
+# O(m log m + n log n + n log m ) = O (m + n) * log m + n * log n)
+print findtarget(A, B, 20)
+print (time.clock() - start)
+start = time.clock()
+# solution#2:
+# O(m log m + n log m ) = O ((m + n) * log m)
+print optimizedSolution(A, B, 20)
+print (time.clock() - start)
