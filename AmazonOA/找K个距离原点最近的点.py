@@ -27,6 +27,9 @@ def findKclosePoint(original, points, k):
         if len(heap) > k:
             heappop(heap)
 
-    return [tmp[1] for tmp in heap]
+    res = []
+    while heap:
+        res.append(heappop(heap)[1])
+    return res[::-1]
 
 print findKclosePoint([0, 0], [[1,1], [2,2], [1,3], [2,4],[0,1],[1, 0]], 5)

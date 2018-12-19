@@ -35,6 +35,55 @@ def findtarget(listA, listB, target):
     return res[1:]
 
 def optimizedSolution(listA, listB, target):
+    # O ((m + n) log m) find the paris
+
+    # ensure listA is the smaller one:
+    if len(listA) > len(listB):
+        listA, listB = listB, listA
+
+    # sort the bigger list for binary search purpose:
+    tmp = listB
+    listB = sorted(listB)
+    smallest, biggest = listB[0], listB[-1]
+    res = [float('inf'), None, None]
+    for val in listA:
+        if val + smallest > target:
+            continue
+        if val + biggest < target:
+            diff = target - val - biggest
+            if diff < res[0]:
+                res = [diff, val, biggest]
+        else:
+            # val + smallest <= target, val + biggest >= target:
+            index = bisect_left(listB, target - val)
+            if target - val == listB[index]:
+                return [val, listB[index]]
+            else:
+                curr = val + listB[index - 1]
+                if target - curr < res[0]:
+                    res = [target - curr, val, listB[index - 1]]
+
+    Aval, Bval = res[1], res[2]
+    Aind, Bind = [], []
+    # build Aind
+    for ind, val in enumerate(listA):
+        if val == Aval:
+            Aind.append(ind)
+    # build Bind
+    for ind, val in enumerate(tmp):
+        if val == Bval:
+            Bind.append(ind)
+
+    res = []
+    for i in xrange(len(Aind)):
+        for j in xrange(len(Bind)):
+            res.append([Aind[i], Bind[j]])
+    print res
+    return res
+
+
+
+def anotherSolution(listA, listB, target):
 
     # ensure listA is the smaller one:
     if len(listA) > len(listB):
@@ -60,12 +109,13 @@ def optimizedSolution(listA, listB, target):
                 curr = val + listB[index - 1]
                 if target - curr < res[0]:
                     res = [target - curr, val, listB[index - 1]]
-    return res[1:]
+    return res
 
 
 
-A = [randint(0, 100) for _ in xrange(10)]
-B = [randint(0, 100) for _ in xrange(10)]
+
+A = [randint(0, 100) for _ in xrange(100)]
+B = [randint(0, 100) for _ in xrange(100)]
 print A, B
 start = time.clock()
 # solution#1:
@@ -75,5 +125,12 @@ print (time.clock() - start)
 start = time.clock()
 # solution#2:
 # O(m log m + n log m ) = O ((m + n) * log m)
-print optimizedSolution(A, B, 20)
+res = optimizedSolution(A, B, 20)
+print res
+# for i in xrange(len(res)):
+#     print A[res[i][0]], B[res[i][1]]
+
+
 print (time.clock() - start)
+
+# print anotherSolution(A, B, 20)
