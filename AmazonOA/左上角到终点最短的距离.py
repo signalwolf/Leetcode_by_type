@@ -16,7 +16,8 @@ def shortestDistance(matrix):
         if currP == target:
             return dis
         visited.add(currP)
-        for dx, dy in [[0, 1], [0, -1], [-1,0], [1, 0]]:
+        for dx, dy in \
+                [[0, 1], [0, -1], [-1,0], [1, 0]]:
             nx, ny = currP[0] + dx, currP[1] + dy
             if 0 <= nx < m and 0 <= ny < n and (nx, ny) not in visited and matrix[nx][ny] == 1:
                 queue.append([dis + 1, (nx, ny)])
