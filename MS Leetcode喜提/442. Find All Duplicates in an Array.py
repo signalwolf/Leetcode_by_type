@@ -47,4 +47,4 @@ def findDuplicates(nums):
 
 alist = [3,7,2,1,3,2,1,2,1,2,6, 7]
 print sorted(alist)
-print findDuplicates([3,7,2,1,3,2,1,2,1,2,6, 7])
+print sorted(findDuplicates([3,7,2,1,3,2,1,2,1,2,6, 7]))
